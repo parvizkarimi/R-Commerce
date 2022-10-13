@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="album py-5 bg-light">
+		<div class="container">
+			<div class="row">
+				<h1>Bienvenue sur votre site Rezdar Commere</h1>
+				{% if categories|length >0 %}
+
+					{% set i = 1 %}
+					{% for category in categories %}
+						{% if category.parent==null %}
+						{% else %}
+							<div class="col-4">
+								<div class="card mb-4 box-shadow ">
+									<a href="">
+										<img class="card-img-top w-100" src="https://picsum.photos/300/200?random={{i}}" alt="Card image cap">
+									</a>
+									<div class="card-body">
+										<p class="card-text text-center">{{category.name}}</p>
+
+										<div class="d-flex justify-content-between align-items-center"></div>
+									</div>
+								</div>
+							</div>
+						{% endif %}
+						{% set i = i+1 %}
+					{% endfor %}
+
+				{% else %}
+
+					<span>Pas de categorie pour le moment</span>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
